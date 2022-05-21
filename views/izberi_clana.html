@@ -1,0 +1,20 @@
+% rebase('osnova.html')
+<!-- Izpiše tabelo članov dobljenih z iskanjem po imenu/priimku, ob kliku na id preusmeri na stran od člana -->
+Izberite člana:
+<table>
+    <tr>
+        <th>Id</th>
+        <th>Ime</th>
+        <th>Priimek</th>
+        <th>Starost</th>
+        <th>Spol</th>
+    </tr>
+    %for clan in cl:
+        <tr>
+            <td><a href="/izpisi_clana/{{clan[0]}}">{{clan[0]}}</a></td>
+            <td>{{clan[1]}}</td>
+            <td>{{clan[2]}}</td>
+            <td>{{clan[3]}}</td>
+            <td>{{clan[4]}}</td>
+        </tr>
+    %end

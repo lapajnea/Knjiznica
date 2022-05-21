@@ -1,0 +1,25 @@
+% rebase('osnova.html')
+<!-- Izbereš tabelo iskanja knjige in podatek -->
+<br>
+<br>
+<br>
+<h1 style="text-align: center;"> Poišči knjigo </h1>
+<p style = "text-align: center;"> Spodaj lahko poiščeš knjigo glede na naslov, avtoja, žanr ali založbo. 
+    Ustrezno izberi parameter ter v polje podatek napiši kaj iščeš. </p>
+<be>
+<fieldset></fieldset>
+<form method="POST">
+    <div style="text-align: center;"
+    <label for="izberi_vrednost">Izberi tabelo iskanja:</label>
+    <select name="izberi" id="izberi_vrednost">
+        <option value="">--Prosim izberi vrednost--</option>
+        <option value="naslov">Naslov</option>
+        <option value="avtor">Avtor</option>
+        <option value="zanr">Žanr</option>
+        <option value="zalozba">Založba</option>
+    </select>
+    Podatek: <input type="text" name="podatek" /><br />
+    <br>
+    <button class="button"><span>Išči!</span></button>
+</fieldset>
+</form>

@@ -1,0 +1,73 @@
+% rebase('osnova.html')
+<!-- Izpiše podatke člana -->
+%if pod == []:
+    Tega člana ni v bazi.
+    <p> Če želite poiskati novega člana kliknite <a href="/poisci_clana"> TUKAJ</a>.</p>
+
+%else:
+<!-- Podatki -->
+    <h1 style="text-align: center;"> Član: {{pod[1]}} {{pod[2]}}, {{pod[0]}} </h1>
+    <table class="center" >
+        <tr>
+            <td>Id</td>
+            <td>{{pod[0]}}</td>
+        </tr>
+        <tr>
+        <td>Ime</td>
+        <td>{{pod[1]}}</td>
+        </tr>
+        <tr>
+            <td>Priimek</td>
+            <td>{{pod[2]}}</td>
+        </tr>
+        <tr>
+            <td>Starost</td>
+            <td>{{pod[3]}}</td>
+        </tr>
+        <tr>
+            <td>Spol</td>
+            <td>{{pod[4]}}</td>
+        </tr>
+        <tr>
+            <td>Dolg</td>
+            <td>{{pod[5]}}</td>
+        </tr>
+    </table>
+
+<!-- Možnost izposoje in poravnave dolga -->
+    Če želite članu izposoditi knjigo kliknite <a href="/izposodi_knjigo/{{pod[0]}}">TUKAJ</a>.
+    <br>
+    Če želite poravnati dolg člana kliknite <a href="/poravnaj_dolg/{{pod[0]}}">TUKAJ</a>.
+    <br>
+    <br>
+<!-- Izpiše zgodovino izposoj člana -->
+    % if len(iz) == 0:
+        <p>Član si ni še izposodil knjig.</p>
+        <p> Če želite poiskati novega člana kliknite <a href="/poisci_clana"> TUKAJ</a>.</p>
+    % else:
+        <table>
+            <tr>
+                <th>Id izposoje</th>
+                <th>Id knjige</th>
+                <th>Datum izposoje</th>
+                <th>Datum vrnitve</th>
+                <th>Zamudnina</th>
+                <th></th>
+            </tr>
+            %for izposoja in iz:
+                <tr>
+                    <td>{{izposoja[0]}}</td>
+                    <td><a href="/podatki_knjige/{{izposoja[1]}}/{{izposoja[2]}}">{{izposoja[1]}}</a></td>
+                    <td>{{izposoja[3]}}</td>
+                    <td>{{izposoja[4]}}</td>
+                    <td>{{izposoja[5]}}</td>
+                    % if izposoja[3] is not None and izposoja[4] is None:
+                        <td><a href="/vrni_knjigo/{{izposoja[2]}}/{{izposoja[0]}}">Vrni</a></td>
+                    %end
+                </tr>
+            %end
+
+
+        </table>
+
+    <p> Če želite poiskati novega člana kliknite <a href="/poisci_clana"> TUKAJ</a>.</p>

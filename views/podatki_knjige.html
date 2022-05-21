@@ -1,0 +1,16 @@
+% rebase('osnova.html')
+<!-- Izpiše podatke izbrane knjige -->
+<br>
+
+<h1 style="text-align: center;"> Knjiga: {{pod[1]}}, {{pod[2]}} </h1>
+<ul style ="text-align: center;">
+    <p>Id: {{pod[0]}}</p>
+    <p>Naslov: {{pod[1]}}</p>
+    <p>Avtor: {{pod[2]}}</p>
+    <p>Žanr: {{pod[3]}}</p>
+    <p>Leto izdaje: {{pod[4]}}</p>
+    <p>Založba: {{pod[5]}}</p>
+</ul>
+<hr>
+
+<p style="text-align: center;">Če želite nazaj na podatke o članu, kliknite <a href="/izpisi_clana/{{id_c}}/">TUKAJ</a></p>.

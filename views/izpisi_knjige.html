@@ -1,0 +1,41 @@
+% rebase('osnova.html')
+<!-- Izpiše knjige glede na vnešene parametre -->
+<h1> Seznam knjig: </h1>
+<p> Spodaj je seznam knjig, ki ste jih iskali. V kolikor bi knjigo želeli izposoditi članu, kliknite na izposojo, ter ustrezno poiščite člana.</p>
+% if len(pod) == 0:
+    <p>Podatki se ne ujemajo z nobeno knjigo v bazi.</p>
+    Če želiš znova posikati knjigo, klikni <a href="/poisci_knjigo">TUKAJ</a>
+
+%elif -1 in pod:
+    <p>Niste izbrali nobene tabele.</p>
+    Če želiš znova posikati knjigo, klikni <a href="/poisci_knjigo">TUKAJ</a>
+% else:
+    <table>
+        <tr>
+            <th>Id</th>
+            <th>Naslov</th>
+            <th>Avtor</th>
+            <th>Žanr</th>
+            <th>Leto izdaje</th>
+            <th>Založba</th>
+            <th>Stanje izposoje</th>
+            <th> Izposodi </th>
+        </tr>
+        %for knjiga in pod.values():
+            <tr>
+                <td>{{knjiga[0]}}</td>
+                <td>{{knjiga[1]}}</td>
+                <td>{{knjiga[2]}}</td>
+                <td>{{knjiga[3]}}</td>
+                <td>{{knjiga[4]}}</td>
+                <td>{{knjiga[5]}}</td>
+                <td>{{knjiga[6]}}</td>
+                <!-- Možnos izposoje te knjige članu -->
+                %if knjiga[6] == 'Neizposojena':
+                    <td> <a href="/izposodi_clanu/{{knjiga[0]}}">Na izposojo</a></td>
+                %end
+            </tr>
+        %end
+
+    </table>
+    <p><a href="/poisci_knjigo">Nazaj na iskanje.</a></p>
